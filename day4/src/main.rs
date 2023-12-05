@@ -58,15 +58,14 @@ fn main() {
         }
         // println!("Card {card_no} total win: {total_win}");
         sum += points;
-        let max = std::cmp::min(card_no+total_win, starting_cards);
+        let max = std::cmp::min(card_no + total_win, starting_cards);
         if card_no + 1 > starting_cards {
             continue;
         }
-        for _ in 0..*total_copies {
-            for i in (card_no + 1)..=max {
-                cards.entry(i).or_insert(1);
-                cards.entry(i).and_modify(|c| *c += 1);
-            }
+        let count = *total_copies;
+        for i in (card_no + 1)..=max {
+            cards.entry(i).or_insert(1);
+            cards.entry(i).and_modify(|c| *c += count);
         }
     }
     println!("Sum: {sum}");
