@@ -67,9 +67,9 @@ fn calculate_distance(
         current = add(current, diff);
         // println!("{current:?}");
         steps += if diff.0 != 0 && empty_cols.contains(&current.0) {
-            2
+            1000000
         } else if diff.1 != 0 && empty_rows.contains(&current.1) {
-            2
+            1000000
         } else {
             1
         };
